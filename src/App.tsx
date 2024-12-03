@@ -50,7 +50,7 @@ function App() {
           </Item>
         </Grid>
         {/* NavBar item */}
-        <Grid size={3}>
+        <Grid size={3} sx={{ display: { xs: "none", lg: "block" } }}>
           <Item
             sx={{
               boxShadow: "0 0 0 0",
@@ -61,7 +61,7 @@ function App() {
           </Item>
         </Grid>
         {/*AsideBar item */}
-        <Grid size={9}>
+        <Grid size={{ sm: 12, lg: 9 }}>
           <Item
             sx={{
               boxShadow: "0 0 0 0",

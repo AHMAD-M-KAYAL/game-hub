@@ -4,11 +4,17 @@ import GameCard from "./GameCard";
 import Grid from "@mui/material/Grid2";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
 export interface Games {
   id: number;
   name: string;
   background_image: string;
+  parent_platforms: { platform: Platform }[];
+  metacritic: string;
 }
 interface GameResponse {
   count: number;
@@ -28,7 +34,15 @@ const GridGame = () => {
   return (
     <Grid container spacing={3}>
       {listGames.map((oneGame) => (
-        <Grid size={4}>
+        <Grid
+          key={oneGame.id}
+          size={{ sm: 12, md: 6, lg: 4 }}
+          sx={{
+            margin: { xs: "auto" },
+            minWidth: { xs: "350px", sm: "auto" },
+            maxWidth: { xs: "350px", sm: "auto" },
+          }}
+        >
           <Item>
             <GameCard game={oneGame} />
           </Item>
