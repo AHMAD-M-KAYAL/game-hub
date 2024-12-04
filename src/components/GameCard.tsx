@@ -2,7 +2,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Games } from "./GridGame";
+import { Games } from "../hooks/useGames";
 import Metacritic from "./Metacritic";
 import GameIcons from "./GameIcons";
 import getNewPhotoSize from "../services/getNewPhotoSize";
@@ -10,7 +10,6 @@ interface Props {
   //interface to import data  of type(Games) from GridGame and share it again
   game: Games;
 }
-
 export default function GameCard({ game }: Props) {
   return (
     //card => this is material Ui component to play with DATA ass all
