@@ -78,7 +78,6 @@ const NavBar = ({ darkMode }: Props) => {
         }}
       >
         <img src={logo} style={{ width: "60px", height: "60px" }} />
-        <div>navbar</div>
       </Box>
       <FormControlLabel
         control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}

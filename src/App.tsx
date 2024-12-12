@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import { CssBaseline } from "@mui/material";
 import { useState } from "react";
 import GridGame from "./components/GridGame";
-
+import GenereList from "./components/GenereList";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
   ...theme.typography.body2,
@@ -57,7 +57,7 @@ function App() {
               borderRadius: "0",
             }}
           >
-            asside
+            {<GenereList />}
           </Item>
         </Grid>
         {/*AsideBar item */}

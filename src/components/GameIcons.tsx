@@ -10,7 +10,7 @@ import { MdPhoneIphone } from "react-icons/md";
 import { BsGlobe } from "react-icons/bs";
 import { IconType } from "react-icons";
 import { IoLogoAndroid } from "react-icons/io";
-import { Games } from "./GridGame";
+import { Games } from "../hooks/useGames";
 
 interface Props {
   game: Games;
@@ -34,13 +34,7 @@ const GameIcons = ({ game }: Props) => {
         const Icon = icons[plat.platform.name];
         return (
           Icon && (
-            <>
-              <Icon
-                key={plat.platform.id}
-                size={24}
-                style={{ marginRight: 8 }}
-              />
-            </>
+            <Icon key={plat.platform.id} size={24} style={{ marginRight: 8 }} />
           )
         );
       })}

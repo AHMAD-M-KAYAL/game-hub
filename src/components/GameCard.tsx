@@ -14,20 +14,34 @@ export default function GameCard({ game }: Props) {
   return (
     //card => this is material Ui component to play with DATA ass all
     //like imgs and text and others
-    <Card sx={{ maxWidth: 350, height: 300 }}>
+    <Card sx={{ maxWidth: 350 }}>
       <CardMedia /*this is material Ui component to play with imgs */
         component="img"
         height="150"
         image={getNewPhotoSize(game.background_image)} //import imgs from api
         alt="green iguana"
       />
-      <CardContent /*this is material Ui component to play with DataText */>
-        <Typography gutterBottom variant="h5" component="div">
-          {/* this is material Ui component to hold data  */}
+      <CardContent
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }} /*this is material Ui component to play with DataText */
+      >
+        <Typography
+          gutterBottom
+          variant="h6"
+          component="div"
+          sx={{ marginBottom: "30px" }}
+        >
           {game.name}
         </Typography>
-        <GameIcons game={game} />
-        <Metacritic critic={game.metacritic} />
+        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <Typography>
+            <GameIcons game={game} />
+          </Typography>
+          <Metacritic critic={game.metacritic} />
+        </div>
       </CardContent>
     </Card>
   );
