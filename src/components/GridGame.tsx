@@ -6,7 +6,7 @@ import useGames from "../hooks/useGames";
 import SkeletonGame from "./SkeletonGame";
 const Item = styled(Paper)(({}) => ({})); //this function to create and style item in Grid
 const GridGame = () => {
-  const { listGames, errorMessage, isLoading } = useGames();
+  const { data, errorMessage, isLoading } = useGames();
   const skeletonItem = [1, 2, 3, 4, 5, 6];
   return (
     <>
@@ -29,7 +29,7 @@ const GridGame = () => {
         </Grid>
       )}
       <Grid container spacing={3}>
-        {listGames.map((oneGame) => (
+        {data.map((oneGame) => (
           <Grid
             key={oneGame.id}
             size={{ sm: 12, md: 6, lg: 4 }}
