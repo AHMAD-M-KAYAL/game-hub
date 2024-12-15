@@ -4,9 +4,13 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import useGames from "../hooks/useGames";
 import SkeletonGame from "./SkeletonGame";
+import { Genre } from "../hooks/useGenres";
+interface Props {
+  selectedGenre: Genre | null;
+}
 const Item = styled(Paper)(({}) => ({})); //this function to create and style item in Grid
-const GridGame = () => {
-  const { data, errorMessage, isLoading } = useGames();
+const GridGame = ({ selectedGenre }: Props) => {
+  const { data, errorMessage, isLoading } = useGames(selectedGenre);
   const skeletonItem = [1, 2, 3, 4, 5, 6];
   return (
     <>

@@ -6,6 +6,7 @@ import { CssBaseline } from "@mui/material";
 import { useState } from "react";
 import GridGame from "./components/GridGame";
 import GenereList from "./components/GenereList";
+import { Genre } from "./hooks/useGenres";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
   ...theme.typography.body2,
@@ -18,6 +19,7 @@ const Item = styled(Paper)(({ theme }) => ({
 })); //this function to create and style item in Grid
 
 function App() {
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   const [myMode, setMode] = useState("light");
   const darkTheme = createTheme({
     palette: {
@@ -57,7 +59,11 @@ function App() {
               borderRadius: "0",
             }}
           >
-            {<GenereList />}
+            {
+              <GenereList
+                onSelectedGenre={(genre) => setSelectedGenre(genre)}
+              />
+            }
           </Item>
         </Grid>
         {/*AsideBar item */}
@@ -68,7 +74,7 @@ function App() {
               borderRadius: "0",
             }}
           >
-            <GridGame />
+            <GridGame selectedGenre={selectedGenre} />
           </Item>
         </Grid>
         {/*Main item */}
