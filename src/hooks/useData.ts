@@ -5,7 +5,7 @@ interface FetchResponse<T> {
   count: number;
   results: T[];
 }
-const useData = <T>(endPoint:string,requsetConfig?:AxiosRequestConfig,deps?:any[] ) => {
+const useData = <T>(endPoint:string,requestConfig?:AxiosRequestConfig,deps?:any[] ) => {
   const [data, setData] = useState<T[]>([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +13,7 @@ const useData = <T>(endPoint:string,requsetConfig?:AxiosRequestConfig,deps?:any[
      const controller = new AbortController();
      setIsLoading(true);
      apiClient
-       .get<FetchResponse<T>>(endPoint, { signal: controller.signal,...requsetConfig })
+       .get<FetchResponse<T>>(endPoint, { signal: controller.signal,...requestConfig })
        .then((e) => {
         setData(e.data.results);
          setIsLoading(false);

@@ -4,9 +4,11 @@ import Grid from "@mui/material/Grid2";
 import NavBar from "./components/NavBar";
 import { CssBaseline } from "@mui/material";
 import { useState } from "react";
-import GridGame from "./components/GridGame";
+import GameGrid from "./components/GameGrid";
 import GenereList from "./components/GenereList";
 import { Genre } from "./hooks/useGenres";
+import PlatformPage from "./components/PlatformPage";
+import { Platform } from "./hooks/useGames";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
   ...theme.typography.body2,
@@ -20,6 +22,9 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null
+  ); // initial state hook to store selectedPlatform when you click on
   const [myMode, setMode] = useState("light");
   const darkTheme = createTheme({
     palette: {
@@ -39,7 +44,7 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Grid container spacing={3}>
+      <Grid container spacing={0}>
         <Grid size={12}>
           <Item
             sx={{
@@ -49,6 +54,12 @@ function App() {
             }}
           >
             <NavBar darkMode={darkM} />
+            <PlatformPage
+              selectedPlatform={selectedPlatform} //add var via props
+              onSelectPlatform={(plat) => {
+                setSelectedPlatform(plat); //when this handler calls will save the state in selectionPlatform
+              }}
+            />
           </Item>
         </Grid>
         {/* NavBar item */}
@@ -61,6 +72,7 @@ function App() {
           >
             {
               <GenereList
+                setBoleGenre={selectedGenre}
                 onSelectedGenre={(genre) => setSelectedGenre(genre)}
               />
             }
@@ -74,7 +86,10 @@ function App() {
               borderRadius: "0",
             }}
           >
-            <GridGame selectedGenre={selectedGenre} />
+            <GameGrid
+              selectedGenre={selectedGenre}
+              selectedPlat={selectedPlatform} //after edit selectedPlatform we share it to GameGrid to edit the page to show new collection
+            />
           </Item>
         </Grid>
         {/*Main item */}

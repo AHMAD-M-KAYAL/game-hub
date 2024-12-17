@@ -7,11 +7,14 @@ import Avatar from "@mui/material/Avatar";
 import { FolderIcon } from "lucide-react";
 import GradientCircularProgress from "./GradientCircularProgress";
 import { ListItemButton } from "@mui/material";
+import React from "react";
 interface Props {
   onSelectedGenre: (genre: Genre) => void;
+  setBoleGenre: Genre | null;
 }
-const GenereList = ({ onSelectedGenre }: Props) => {
+const GenereList = ({ onSelectedGenre, setBoleGenre }: Props) => {
   const { data, errorMessage, isLoading } = useGenres();
+
   return (
     <>
       {isLoading && <GradientCircularProgress />}
@@ -23,8 +26,10 @@ const GenereList = ({ onSelectedGenre }: Props) => {
               {
                 <ListItem>
                   <ListItemButton
-                    onClick={() => {
-                      onSelectedGenre(e);
+                    onClick={() => onSelectedGenre(e)}
+                    sx={{
+                      borderLeft:
+                        e.id === setBoleGenre?.id ? "solid 1px #212121" : "",
                     }}
                   >
                     <ListItemAvatar>
@@ -33,7 +38,12 @@ const GenereList = ({ onSelectedGenre }: Props) => {
                       </Avatar>
                     </ListItemAvatar>
                     <ListItemText
-                      sx={{ marginLeft: "10px" }}
+                      sx={{
+                        paddingLeft: e.id === setBoleGenre?.id ? "10px" : "",
+                        color:
+                          e.id === setBoleGenre?.id ? "#212121" : "#9e9e9e",
+                        marginLeft: "10px",
+                      }}
                       primary={e.name}
                     />
                   </ListItemButton>
