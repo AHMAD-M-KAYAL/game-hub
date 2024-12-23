@@ -4,17 +4,14 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import useGames, { Platform } from "../hooks/useGames";
 import SkeletonGame from "./SkeletonGame";
-import { Genre } from "../hooks/useGenres";
+import { GameQuery } from "../App";
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlat: Platform | null; //we should to initail selectedPlat to get games witch type of //selectedPlatform//  and //export it// again to //useEffect// to refreash the component
+  gameQuery: GameQuery | null;
+  //we should to initail selectedPlat to get games witch type of //selectedPlatform//  and //export it// again to //useEffect// to refreash the component
 }
 const Item = styled(Paper)(({}) => ({})); //this function to create and style item in Grid
-const GameGrid = ({ selectedGenre, selectedPlat }: Props) => {
-  const { data, errorMessage, isLoading } = useGames(
-    selectedGenre,
-    selectedPlat
-  ); //here we are sending  data to refreash reUse useEffect to get new list of games
+const GameGrid = ({ gameQuery }: Props) => {
+  const { data, errorMessage, isLoading } = useGames(gameQuery); //here we are sending  data to refreash reUse useEffect to get new list of games
   const skeletonItem = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   if (data.length === 0) {
     return <p>no games of this type</p>;

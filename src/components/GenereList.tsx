@@ -6,8 +6,7 @@ import ListItem from "@mui/material/ListItem";
 import Avatar from "@mui/material/Avatar";
 import { FolderIcon } from "lucide-react";
 import GradientCircularProgress from "./GradientCircularProgress";
-import { ListItemButton } from "@mui/material";
-import React from "react";
+import { ListItemButton, Typography } from "@mui/material";
 interface Props {
   onSelectedGenre: (genre: Genre) => void;
   setBoleGenre: Genre | null;
@@ -17,7 +16,11 @@ const GenereList = ({ onSelectedGenre, setBoleGenre }: Props) => {
 
   return (
     <>
-      {isLoading && <GradientCircularProgress />}
+      {isLoading && (
+        <Typography sx={{ marginLeft: "50%" }}>
+          <GradientCircularProgress />
+        </Typography>
+      )}
       {errorMessage && <p>{errorMessage}</p>}
       {data.map((e) => {
         return (

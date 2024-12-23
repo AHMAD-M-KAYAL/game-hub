@@ -1,6 +1,7 @@
 // imagaasd/media/dasljbadfkadkasdassfnlnasbassfuib
 // imagaasd/media/   dasljbadfkadkasdassfnlnasbassfuib
 const getNewPhotoSize = (url: string) => {
+  if (url == null) return "";
   const indexEdit = "media/";
   const startEditUrl = url.indexOf(indexEdit) + indexEdit.length;
   // 8

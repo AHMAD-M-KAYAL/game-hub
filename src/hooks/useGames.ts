@@ -1,3 +1,4 @@
+import { GameQuery } from "../App";
 import useData from "./useData";
 import { Genre } from "./useGenres";
  export interface Platform {
@@ -13,9 +14,11 @@ export interface Games {
   metacritic: string;
 }
  
-const useGames = (selectedGenre:Genre|null,selectedPlatform:Platform|null) =>  useData<Games>("/games",{params:
-  {genres:selectedGenre?.id,
-    platforms:selectedPlatform?.id}},[selectedGenre?.id,selectedPlatform?.id])
+const useGames  = (gameQuery:GameQuery|null) =>  useData<Games>("/games",{params:
+  {genres:gameQuery?.genre?.id,
+  platforms:gameQuery?.platform?.id,
+  ordering:gameQuery?.sortOrder
+  }},[gameQuery])
 {/*     useGames will sent var in headind(selectedGenre:Genre|null,selectedPlatform:Platform|null)
  in useData and useData receive them and give us result and refreash { data,isLoading,  errorMessage };
  then export { data,isLoading,  errorMessage }; to all components again to use 
