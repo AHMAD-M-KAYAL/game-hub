@@ -22,40 +22,35 @@ const GenereList = ({ onSelectedGenre, setBoleGenre }: Props) => {
         </Typography>
       )}
       {errorMessage && <p>{errorMessage}</p>}
-      {data.map((e) => {
-        return (
-          <div key={e.id}>
-            <List>
-              {
-                <ListItem>
-                  <ListItemButton
-                    onClick={() => onSelectedGenre(e)}
-                    sx={{
-                      borderLeft:
-                        e.id === setBoleGenre?.id ? "solid 1px #212121" : "",
-                    }}
-                  >
-                    <ListItemAvatar>
-                      <Avatar src={e.image_background}>
-                        <FolderIcon />
-                      </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                      sx={{
-                        paddingLeft: e.id === setBoleGenre?.id ? "10px" : "",
-                        color:
-                          e.id === setBoleGenre?.id ? "#212121" : "#9e9e9e",
-                        marginLeft: "10px",
-                      }}
-                      primary={e.name}
-                    />
-                  </ListItemButton>
-                </ListItem>
-              }
-            </List>
-          </div>
-        );
-      })}
+      <List>
+        {data.map((e) => {
+          return (
+            <ListItem key={e.id}>
+              <ListItemButton
+                onClick={() => onSelectedGenre(e)}
+                sx={{
+                  borderLeft:
+                    e.id === setBoleGenre?.id ? "solid 1px #212121" : "",
+                }}
+              >
+                <ListItemAvatar>
+                  <Avatar src={e.image_background}>
+                    <FolderIcon />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  sx={{
+                    paddingLeft: e.id === setBoleGenre?.id ? "10px" : "",
+                    color: e.id === setBoleGenre?.id ? "#212121" : "#9e9e9e",
+                    marginLeft: "10px",
+                  }}
+                  primary={e.name}
+                />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
+      </List>
     </>
   );
 };

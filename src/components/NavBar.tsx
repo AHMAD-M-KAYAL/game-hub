@@ -2,8 +2,11 @@ import { Box, FormControlLabel, styled } from "@mui/material";
 import logo from "../assets/logo.webp";
 import Switch from "@mui/material/Switch";
 import { useState } from "react";
+import SearchFiled from "./SearchFiled";
+import OnChangeScreen from "../services/OnChangeScreen";
 interface Props {
   darkMode: () => void;
+  searchGames: (search: string) => void;
 }
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -60,9 +63,10 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     }),
   },
 })); //this function to style toggle style for dark and light mode
-
-const NavBar = ({ darkMode }: Props) => {
+const NavBar = ({ darkMode, searchGames }: Props) => {
+  const { widthScreen } = OnChangeScreen();
   const [darkTitle, setDarkTitle] = useState("DarkMode");
+
   return (
     <Box
       sx={{
@@ -75,19 +79,22 @@ const NavBar = ({ darkMode }: Props) => {
         sx={{
           display: "flex",
           alignItems: "center",
+          marginLeft: "10px",
         }}
       >
         <img src={logo} style={{ width: "60px", height: "60px" }} />
       </Box>
+      <SearchFiled searchGame={searchGames} />
+      {/*Search filed*/}
       <FormControlLabel
-        control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+        control={<MaterialUISwitch defaultChecked />}
         onChange={() => {
           darkMode();
           darkTitle == "DarkMode"
             ? setDarkTitle("LightMode")
             : setDarkTitle("DarkMode");
         }}
-        label={darkTitle}
+        label={widthScreen >= 700 ? darkTitle : ""}
       />
     </Box>
   );

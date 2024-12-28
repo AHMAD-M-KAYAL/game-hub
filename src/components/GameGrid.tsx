@@ -2,7 +2,7 @@ import GameCard from "./GameCard";
 import Grid from "@mui/material/Grid2";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import useGames, { Platform } from "../hooks/useGames";
+import useGames from "../hooks/useGames";
 import SkeletonGame from "./SkeletonGame";
 import { GameQuery } from "../App";
 interface Props {
@@ -38,18 +38,15 @@ const GameGrid = ({ gameQuery }: Props) => {
       )}
 
       {!isLoading && (
-        <Grid container spacing={3}>
+        <Grid container spacing={6}>
           {data.map((oneGame) => (
-            <Grid
-              key={oneGame.id}
-              size={{ sm: 12, md: 6, lg: 4 }}
-              sx={{
-                margin: { xs: "auto" },
-                minWidth: { xs: "350px", sm: "auto" },
-                maxWidth: { xs: "350px", sm: "auto" },
-              }}
-            >
-              <Item>
+            <Grid key={oneGame.id} size={{ xs: 12, sm: 6, md: 4 }}>
+              <Item
+                sx={{
+                  minWidth: { xs: "200px", sm: "230px", md: "200px" },
+                  maxWidth: { xs: "300px", sm: "320px", md: "320px" },
+                }}
+              >
                 <GameCard game={oneGame} />
               </Item>
             </Grid>

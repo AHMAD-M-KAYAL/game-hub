@@ -1,9 +1,6 @@
 import * as React from "react";
 
-import CircularProgress, {
-  circularProgressClasses,
-  CircularProgressProps,
-} from "@mui/material/CircularProgress";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function GradientCircularProgress() {
   return (

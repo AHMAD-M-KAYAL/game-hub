@@ -14,7 +14,7 @@ export default function GameCard({ game }: Props) {
   return (
     //card => this is material Ui component to play with DATA ass all
     //like imgs and text and others
-    <Card sx={{ maxWidth: 350 }}>
+    <Card>
       <CardMedia /*this is material Ui component to play with imgs */
         component="img"
         height="150"

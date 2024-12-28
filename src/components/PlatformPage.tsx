@@ -6,7 +6,6 @@ import MenuItem from "@mui/material/MenuItem";
 import { Typography } from "@mui/material";
 import { Platform } from "../hooks/useGames";
 import usePlatform from "../hooks/usePlatform";
-import { Box } from "lucide-react";
 interface Props {
   onSelectPlatform: (platform: Platform) => void; //set function the share Platform with App.tsx when you click on Platform
   selectedPlatform: Platform | null; //first time it's null because you are didn't click on platform and it refresh when to choose platform
